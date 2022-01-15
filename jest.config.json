@@ -1,0 +1,29 @@
+{
+    "transform": {
+      "^.+\\.tsx|.ts?$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "//comment": "all the below files must have at least 80 as value in the future",
+        "branches": 20,
+        "functions": 20,
+        "lines": 20,
+        "statements": -10
+      }
+    },
+    "silent": false,
+    "noStackTrace": false,
+    "verbose": false,
+    "clearMocks": false,
+    "collectCoverage": false,
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(ts|js)$",
+    "moduleFileExtensions": ["ts", "js"],
+    "moduleDirectories": ["node_modules", "src"],
+    "testEnvironment": "node",
+    "coverageReporters": ["json", "lcov", "text", "clover"],
+    "modulePathIgnorePatterns": ["<rootDir>/build"],
+    "setupFilesAfterEnv": ["./jest.setup.js"],
+    "moduleNameMapper": {
+      
+    }
+  }

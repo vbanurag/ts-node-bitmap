@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import lineReader from 'line-reader';
 import { UtilHelper } from './utilHelper';
 
@@ -50,17 +51,38 @@ export class FileHelper {
                 arr[k - 1] = arr[k - 1].map(Number);
             }
             testCases[index + 1] = {
-                input: arr
+                input: arr,
+                rawDta: data,
             }
         });
-        return Promise.resolve(data);
+        return Promise.resolve(testCases);
     }
 
     async getData() {
         let data: [] | any = await this.readFile();
         let finalData = await this.prepareData(data);
-        console.log(finalData)
         return Promise.resolve(finalData);
+    }
+
+
+    async writeFile(data: [[]]) {
+        return new Promise((res, rej) => {
+            const logger = fs.createWriteStream(this.outFilePath, {
+                flags: 'a' // 'a' means appending (old data will be preserved)
+            })
+            for (let i = 0; i < data.length; i++) {
+                logger.write("\n");
+                logger.write(data[i].join(' '));
+            }
+            logger.write("\n");
+            logger.close()
+        })
+    }
+
+    async outHelper(data: any) {
+        for (let _data in data) {
+            this.writeFile(data[_data]);
+        }
     }
 
 

@@ -1,7 +1,10 @@
-console.log('hellp')
-
-import { BitMapSolveHelper } from './bitMapSolve.helper';
+import { BitMapSolveHelper } from './bitMap/bitMapSolve.helper';
 
 const as = new BitMapSolveHelper();
 
-as.stdIn()
+console.log('Start Reading')
+as.stdIn().then(() => {
+    as.startSolve()
+    console.log('closed')
+})
+

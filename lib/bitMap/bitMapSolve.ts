@@ -1,5 +1,5 @@
 import { isEmpty } from "lodash";
-import { UtilHelper } from "./utils/utilHelper";
+import { UtilHelper } from "../utils/utilHelper";
 
 export class BitMapSolve {
     private _input: number[][];
